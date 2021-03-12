@@ -2,30 +2,28 @@
 #define __TEXT_H__	 
 #include <stm32f10x.h>
 #include "fontupd.h"
-//////////////////////////////////////////////////////////////////////////////////	 
-//±¾³ÌĞòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßĞí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEKÕ½½¢STM32¿ª·¢°åV3
-//ºº×ÖÏÔÊ¾ Çı¶¯´úÂë	   
-//ÕıµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//´´½¨ÈÕÆÚ:2015/1/20
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓĞ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 2014-2024
-//All rights reserved									  
-////////////////////////////////////////////////////////////////////////////////// 	 
+/************************************************
+ ALIENTEKæˆ˜èˆ°STM32å¼€å‘æ¿
+ 
+* å……ç”µæ¡©ä¸»æ§ç³»ç»Ÿ * 
+ 
+ ä½œè€…ï¼šé«˜æ©é“­ @GaoEnMing
+
+* @date    2021-xx-xx
+* @brief   é˜²æ‹”å……ç”µæ¡©å·¥ç¨‹è®¾è®¡
+************************************************/	 
  					     
-void Get_HzMat(unsigned char *code,unsigned char *mat,u8 size);			//µÃµ½ºº×ÖµÄµãÕóÂë
-void Get_SrcHzMat(unsigned char *code,unsigned char *mat);			//µÃµ½±ê×¼24pixelsºº×Ö×ÖÔ´
-void Show_Font(u16 x,u16 y,u8 *font,u8 size,u8 mode);					//ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ò»¸öºº×Ö
-void Show_Font_Ex(u16 x,u16 y,u8 *font,u8 size,u8 mode);			//ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾ÈÎÒâ´óĞ¡µÄºº×Ö
-void Show_Str(u16 x,u16 y,u16 width,u16 height,u8*str,u8 size,u8 mode);	//ÔÚÖ¸¶¨Î»ÖÃÏÔÊ¾Ò»¸ö×Ö·û´® 
+void Get_HzMat(unsigned char *code,unsigned char *mat,u8 size);			//å¾—åˆ°æ±‰å­—çš„ç‚¹é˜µç 
+void Get_SrcHzMat(unsigned char *code,unsigned char *mat);			//å¾—åˆ°æ ‡å‡†24pixelsæ±‰å­—å­—æº
+void Show_Font(u16 x,u16 y,u8 *font,u8 size,u8 mode);					//åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºä¸€ä¸ªæ±‰å­—
+void Show_Font_Ex(u16 x,u16 y,u8 *font,u8 size,u8 mode);			//åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºä»»æ„å¤§å°çš„æ±‰å­—
+void Show_Str(u16 x,u16 y,u16 width,u16 height,u8*str,u8 size,u8 mode);	//åœ¨æŒ‡å®šä½ç½®æ˜¾ç¤ºä¸€ä¸ªå­—ç¬¦ä¸² 
 void Show_Str_Mid(u16 x,u16 y,u8*str,u8 size,u16 len);
-void Advanced_Show_Str(u16 x,u16 y,u16 width,u16 height,u8*str,u8 size,u8 mode);//²»¾ĞÓÚÏÔÊ¾×ÖÌå´óĞ¡
-void Advanced_Show_Nbr(u16 x,u16 y,u16 Nbr,u8 size);//²»¾ĞÓÚÏÔÊ¾×ÖÌå´óĞ¡£¬ÏÔÊ¾3Î»Êı×Ö(¶©ÖÆ)
-void Advanced_Show_Str_Mid(u16 x,u16 y,u8*str,u8 size,u16 len,uint8_t mode);	//¾ÓÖĞÏÔÊ¾£¬×ÖÌå´óĞ¡ÈÎÒâ
+void Advanced_Show_Str(u16 x,u16 y,u16 width,u16 height,u8*str,u8 size,u8 mode);//ä¸æ‹˜äºæ˜¾ç¤ºå­—ä½“å¤§å°
+void Advanced_Show_Nbr(u16 x,u16 y,u16 Nbr,u8 size);//ä¸æ‹˜äºæ˜¾ç¤ºå­—ä½“å¤§å°ï¼Œæ˜¾ç¤º3ä½æ•°å­—(è®¢åˆ¶)
+void Advanced_Show_Str_Mid(u16 x,u16 y,u8*str,u8 size,u16 len,uint8_t mode);	//å±…ä¸­æ˜¾ç¤ºï¼Œå­—ä½“å¤§å°ä»»æ„
 uint8_t* zoomChar(uint16_t in_width,uint16_t in_heig,uint16_t out_width,uint16_t out_heig,	
-									uint8_t *in_ptr,/*uint8_t *out_ptr,*/ uint8_t en_cn);	//¸ù¾İ×ÖÔ´Ëõ·ÅÈÎÒâ´óĞ¡
-void Stellar_Show_Str_Mid(uint16_t x,uint16_t y,uint8_t* str, uint8_t size, uint16_t len);	//¾ÓÖĞÏÔÊ¾¶ÎÂä
-void Remounted_Show_Str(uint16_t x,uint16_t y,uint8_t* str, uint8_t size, uint16_t len);		//´ø¿òµÄ¾ÓÖĞÏÔÊ¾¶ÎÂä
+									uint8_t *in_ptr,/*uint8_t *out_ptr,*/ uint8_t en_cn);	//æ ¹æ®å­—æºç¼©æ”¾ä»»æ„å¤§å°
+void Stellar_Show_Str_Mid(uint16_t x,uint16_t y,uint8_t* str, uint8_t size, uint16_t len);	//å±…ä¸­æ˜¾ç¤ºæ®µè½
+void Remounted_Show_Str(uint16_t x,uint16_t y,uint8_t* str, uint8_t size, uint16_t len);		//å¸¦æ¡†çš„å±…ä¸­æ˜¾ç¤ºæ®µè½
 #endif
